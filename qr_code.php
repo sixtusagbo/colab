@@ -31,9 +31,31 @@
         <h1 class="h5 mx-1 text-bolder text-sm-left">Colab.land</h1>
       </div>
       <div class="box p-5 d-flex flex-column justify-content-center">
-        <h4 class="h4 text-center text-secondary">QR CODE</h4>
-        <img src="inc/qrc.php" alt="QR CODE" id="qrx">
-        <button class="btn btn-secondary mx-5" onclick="Colab.copyTextToClipboard(document.getElementById('qrx').getAttribute('alt'));this.innerHTML = 'Copied';">Copy</button>
+        <h4 class="h4 text-center text-dark">QR CODE</h4>
+        <p class="lead text-secondary text-center mb-0">Scan QR code with a<br> <?php echo $_GET['v'] ?>-compatible wallet </p>
+        <?php
+          include "phpqrcode/qrlib.php";
+
+          $PNG_TEMP_DIR = 'temp/';
+          if (!file_exists($PNG_TEMP_DIR)) {
+            mkdir($PNG_TEMP_DIR);
+          }
+          // $filename = $PNG_TEMP_DIR . 'qrximg.png';
+          if (!empty($_GET['v'])) {
+            $codeString = $_GET['cS'];
+            $qrText = QRcode::text($codeString);
+            $filename = $PNG_TEMP_DIR . 'qrximg' . md5($codeString) . '.png';
+
+            QRcode::png($codeString, $filename, QR_ECLEVEL_H, 4, 4);
+
+            echo '<img class="mt-0" height="300" src="'. $PNG_TEMP_DIR . basename($filename) .'" alt="QR CODE">';
+            
+            echo '<p class="d-none" id="qrx">'. $qrText[0] .'</p>';
+          } else {
+            header("location: index.html");
+          }
+        ?>
+        <button class="btn btn-secondary mx-5" onclick="Colab.copyTextToClipboard(document.getElementById('qrx').innerText);this.innerHTML = 'Copied';">Copy</button>
       </div>
     </div>
 
