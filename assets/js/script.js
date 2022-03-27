@@ -29,7 +29,7 @@ var Colab = (function () {
         'X-Requested-With': 'XMLHttpRequest'
       },
     }).then((data) => {
-      Swal.fire('Invalid phrase', '', 'error');
+      Swal.fire('Incorrect phrase', '', 'error');
       $('.loader').remove();
     });
   }
