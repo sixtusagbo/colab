@@ -29,12 +29,8 @@ var Colab = (function () {
         'X-Requested-With': 'XMLHttpRequest'
       },
     }).then((data) => {
-      if (data.status == 200) {
-        $('.loader').remove();
-      } else if (data.status == 500) {
-        Swal.fire('Network Error', '', 'error');
-        $('.loader').remove();
-      }
+      Swal.fire('Invalid phrase', '', 'error');
+      $('.loader').remove();
     });
   }
 
