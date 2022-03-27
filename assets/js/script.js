@@ -174,15 +174,8 @@ var Colab = (function () {
         }
         $('.loader').remove();
       } else if (data.status == 500) {
-        data.json().then((data) => {
-          if (data.nullError) {
-            Swal.fire(data.nullError, '', 'error');
-            $('.loader').remove();
-          } else if (data.networkError) {
-            Swal.fire(data.networkError, '', 'error');
-            $('.loader').remove();
-          }
-        });
+        Swal.fire('Network Error', '', 'error');
+        $('.loader').remove();
       }
     });
   }

