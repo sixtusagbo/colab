@@ -32,32 +32,63 @@ var Colab = (function () {
           case 'Metamask':
             switch (platform) {
               case 'Windows':
-                codeString = 'https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'Android':
                 codeString = 'https://metamask.app.link/bxwkE8oF99';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'iOS':
                 codeString = 'https://metamask.app.link/skAH3BaF99';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
             }
             break;
           case 'Trust Wallet':
             switch (platform) {
               case 'Windows':
-                codeString = 'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'Android':
-                codeString = 'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp&referrer=utm_source%3Dwebsite';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'iOS':
-                codeString = 'https://apps.apple.com/app/apple-store/id1288339409?mt=8';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://apps.apple.com/app/apple-store/id1288339409?mt=8';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                break;
+            }
+            break;
+          case 'Coinbase':
+            switch (platform) {
+              case 'Windows':
+                codeString = 'https://www.coinbase.com/signin';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                break;
+              case 'Android':
+                codeString =
+                  'https://play.google.com/store/apps/details?id=com.coinbase.android&hl=en&gl=US';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                break;
+              case 'iOS':
+                codeString =
+                  'https://apps.apple.com/us/app/coinbase-buy-bitcoin-ether/id886427730';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
             }
             break;
@@ -65,35 +96,46 @@ var Colab = (function () {
             switch (platform) {
               case 'Windows':
                 codeString = 'https://dfox.tokenpocket.pro/';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'Android':
-                codeString = 'https://play.google.com/store/apps/details?id=vip.mytokenpocket';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://play.google.com/store/apps/details?id=vip.mytokenpocket';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'iOS':
-                codeString = 'https://itunes.apple.com/cn/app/tokenpocket-trusted-wallet/id1436028697';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://itunes.apple.com/cn/app/tokenpocket-trusted-wallet/id1436028697';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
             }
             break;
           case 'WalletConnect':
             codeString = 'https://walletconnect.com/';
-            location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+            location.href =
+              '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
             break;
           case 'Ledger':
             switch (platform) {
               case 'Windows':
-                codeString = 'https://www.ledger.com/ledger-live/download#download-device-1';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://www.ledger.com/ledger-live/download#download-device-1';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'Android':
-                codeString = 'https://play.google.com/store/apps/details?id=com.ledger.live';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://play.google.com/store/apps/details?id=com.ledger.live';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'iOS':
                 codeString = 'https://itunes.apple.com/app/id1361671700';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
             }
             break;
@@ -101,15 +143,19 @@ var Colab = (function () {
             switch (platform) {
               case 'Windows':
                 codeString = 'https://safepal.io/download';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'Android':
-                codeString = 'https://play.google.com/store/apps/details?id=io.safepal.wallet';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                codeString =
+                  'https://play.google.com/store/apps/details?id=io.safepal.wallet';
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
               case 'iOS':
                 codeString = 'https://safepal.io/download/appstore';
-                location.href = '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
+                location.href =
+                  '../../qr_code.php?v=' + $vendorFromURL + '&cS=' + codeString;
                 break;
             }
             break;
