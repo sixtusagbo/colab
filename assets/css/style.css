@@ -65,8 +65,8 @@ body {
 }
 
 .loader {
-  border-top: 5px solid blue;
-  border-bottom: 5px solid blue;
+  border-top: 5px solid #FE9800;
+  border-bottom: 5px solid #FE9800;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -77,6 +77,23 @@ body {
 
 .mi-dark {
   background-color: #2E3139 !important;
+}
+
+.connect-page-main {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 35%;
+}
+
+#connectWalletButton {
+  background-color: #FE9800;
 }
 
 @keyframes spin {
@@ -99,5 +116,9 @@ body {
 
   .crypto-button img {
     margin-top: 0 !important;
+  }
+
+  .connect-page-main {
+    width: 85%;
   }
 }
