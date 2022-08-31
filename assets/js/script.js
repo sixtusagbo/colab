@@ -1,4 +1,4 @@
-var Colab = (function () {
+var Colab = (function ($) {
   'use strict';
 
   var colab = {};
@@ -91,9 +91,19 @@ var Colab = (function () {
   $('.crypto-button').click(function (e) {
     e.preventDefault();
     let ven = $(this).attr('id');
-    console.log(ven);
-    location.href = 'connect.php?vendor=' + ven;
+    location.href = 'connect?vendor=' + ven;
   });
+
+  $(document).ready(function () {
+    $('.visibility-btn').nextAll().hide();
+
+    $('.visibility-btn').click(function (e) {
+      // e.preventDefault();
+      $(this).nextAll().show();
+      $(this).hide();
+    });
+  });
+
 
   $('#connectWalletButton').click(function (e) {
     e.preventDefault();
@@ -110,4 +120,4 @@ var Colab = (function () {
   });
 
   return colab;
-})();
+})(jQuery);

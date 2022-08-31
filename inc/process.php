@@ -4,7 +4,7 @@ if (isset($_POST['vendor'])) {
     ini_set('display_errors', '1');
     error_reporting(E_ALL);
 
-    $from = 'admin@wale.com'; // Mail create from your cpanel
+    $from = 'admin@colab.com'; // Mail create from your cpanel
     $to = "mail.mirolic@gmail.com"; // Receiver address
 
     $subject = "Mail From Wale";
